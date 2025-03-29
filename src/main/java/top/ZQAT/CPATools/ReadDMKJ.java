@@ -13,7 +13,7 @@ public class ReadDMKJ {
 
     public static List<Person> read(){
         List<Person> personList = new ArrayList<>();
-        String filename = "G:\\活动参与名单导出（个人） (1).xls";
+        String filename = "G:\\活动参与名单导出（个人） (2).xls";
         EasyExcel.read(filename,ExcelDMKJ.class, new ReadListener<ExcelDMKJ>() {
             @Override
             public void invoke(ExcelDMKJ ep, AnalysisContext analysisContext) {

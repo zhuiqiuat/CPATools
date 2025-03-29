@@ -22,7 +22,7 @@ public class Main {
             }
         }
         System.out.println("team size = " + teams.size());
-        System.out.println("endteam size = " + endteams.size());
+        System.out.println("end team size = " + endteams.size());
         List<ExcelMember> end = new ArrayList<>();
         for(Team t : endteams){
             for(Person p : t.memberList){

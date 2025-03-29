@@ -25,7 +25,7 @@ public class ReadTeam {
             arr.put(i,i);
             arr2.put(i,i);
         }
-        String filename = "G:\\2025年程序设计团体赛报名表 (2).xlsx";
+        String filename = "G:\\2025年程序设计团体赛报名表 (4).xlsx";
         EasyExcel.read(filename, ExcelTeam.class, new ReadListener<ExcelTeam>() {
             @Override
             public void invoke(ExcelTeam data, AnalysisContext context) {
@@ -61,6 +61,9 @@ public class ReadTeam {
                 p.name = data.getName();
                 p.num = data.getNum();
                 if(!personList.contains(p)) return;
+                personList.remove(p);
+//                System.out.println("name = " + p.name);
+//                System.out.println("contains = " + personList.contains(p));
                 if(mp.containsKey(teamname) && mp.get(teamname).memberList.size() < 5){
                     mp.get(teamname).memberList.add(p);
                 }else{
