@@ -7,6 +7,10 @@ public class ExcelDMKJ {
     String name;
     @ExcelProperty(value = "学号")
     String num;
+    @ExcelProperty(value = "院系")
+    String college;
+    @ExcelProperty(value = "班级")
+    String clas;
 
     public String getName() {
         return name;
@@ -14,6 +18,14 @@ public class ExcelDMKJ {
 
     public String getNum() {
         return num;
+    }
+
+    public String getCollege() {
+        return college;
+    }
+
+    public String getClas() {
+        return clas;
     }
 
     public void setName(String name) {
@@ -24,4 +36,11 @@ public class ExcelDMKJ {
         this.num = num;
     }
 
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public void setClas(String clas) {
+        this.clas = clas;
+    }
 }

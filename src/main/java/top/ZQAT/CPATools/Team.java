@@ -7,8 +7,9 @@ public class Team {
     String name = "";
     List<Person> memberList = new ArrayList<>();
     int totalScore = 0;
-    int time = 0;
+    int totalTime = 0;
     int rank = -1;
+    boolean xgy = false;
 
 
     @Override

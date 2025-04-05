@@ -25,7 +25,7 @@ public class ReadTeam {
             arr.put(i,i);
             arr2.put(i,i);
         }
-        String filename = "G:\\2025年程序设计团体赛报名表 (4).xlsx";
+        String filename = "G:\\2025年程序设计团体赛报名表 (7).xlsx";
         EasyExcel.read(filename, ExcelTeam.class, new ReadListener<ExcelTeam>() {
             @Override
             public void invoke(ExcelTeam data, AnalysisContext context) {
@@ -132,6 +132,49 @@ public class ReadTeam {
             }
         }).sheet(1).headRowNumber(2).doRead();
         return teams;
+    }
+
+    public static List<Team> read2(List<Person> personList){
+        List<Team> teams = new ArrayList<>();
+        Map<String,Team> mp = new HashMap<>();
+
+        String filename = "G:\\通过名单.xlsx";
+        EasyExcel.read(filename, ExcelTeam2.class, new ReadListener<ExcelTeam2>() {
+
+            @Override
+            public void invoke(ExcelTeam2 data, AnalysisContext context) {
+                String teamname = data.teamname;
+                Person p = find(personList,data.name, data.num);
+                Team t;
+                if(mp.containsKey(teamname) && mp.get(teamname).memberList.size() < 5){
+                    t = mp.get(teamname);
+                }else {
+                    t = new Team();
+                    teams.add(t);
+                    t.name = teamname;
+                    mp.put(teamname,t);
+                }
+                t.memberList.add(p);
+                t.totalScore += p.score;
+                t.totalTime += p.time;
+            }
+
+            @Override
+            public void doAfterAllAnalysed(AnalysisContext analysisContext) {
+
+            }
+
+        }).sheet().headRowNumber(1).doRead();
+        return teams;
+    }
+
+    static Person find(List<Person> personList, String name,String num){
+        for(Person p : personList){
+            if(p.name.equals(name) && p.num.equals(num)){
+                return p;
+            }
+        }
+        return null;
     }
 
 }
